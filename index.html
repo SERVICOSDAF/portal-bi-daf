@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intranet | Orçamento e BI</title>
+<style>
+:root{
+  --primary:#12395b;
+  --primary-2:#1f6fae;
+  --accent:#2b8ac6;
+  --bg:#f3f6f9;
+  --surface:#ffffff;
+  --text:#1f2d3d;
+  --muted:#718096;
+  --border:#e2e8f0;
+  --success:#2e8b57;
+  --shadow:0 8px 24px rgba(18,57,91,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+a{text-decoration:none;color:inherit}
+.app{min-height:100vh;display:flex}
+
+/* Sidebar */
+.sidebar{
+  width:245px;
+  background:linear-gradient(180deg,#0e2f4c 0%,#12395b 55%,#16496e 100%);
+  color:#fff;
+  position:fixed;
+  left:0;top:0;bottom:0;
+  z-index:30;
+  display:flex;
+  flex-direction:column;
+}
+.logo{
+  padding:25px 22px 20px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.logo-mark{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(255,255,255,.12);
+  display:grid;place-items:center;
+  font-size:21px;margin-bottom:12px;
+}
+.logo strong{display:block;font-size:16px;letter-spacing:.2px}
+.logo small{display:block;margin-top:4px;opacity:.65;font-size:11px}
+.nav{padding:18px 12px;flex:1}
+.nav-label{
+  font-size:10px;text-transform:uppercase;letter-spacing:1.4px;
+  opacity:.5;padding:10px 12px 7px;
+}
+.nav button{
+  width:100%;border:0;background:transparent;color:rgba(255,255,255,.76);
+  text-align:left;padding:12px 13px;border-radius:9px;margin:2px 0;
+  cursor:pointer;font-size:13px;display:flex;align-items:center;gap:11px;
+}
+.nav button:hover,.nav button.active{background:rgba(255,255,255,.12);color:#fff}
+.nav-icon{width:20px;text-align:center}
+.side-footer{
+  padding:17px 20px;border-top:1px solid rgba(255,255,255,.12);
+  font-size:11px;opacity:.62;line-height:1.5
+}
+
+/* Main */
+.main{margin-left:245px;width:calc(100% - 245px);min-height:100vh}
+.topbar{
+  height:68px;background:var(--surface);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 34px;position:sticky;top:0;z-index:20;
+}
+.breadcrumb{font-size:13px;color:var(--muted)}
+.breadcrumb strong{color:var(--text)}
+.user{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.avatar{
+  width:34px;height:34px;border-radius:50%;background:#e7f0f7;
+  color:var(--primary);display:grid;place-items:center;font-weight:700;
+}
+.content{padding:30px 36px 45px;max-width:1450px}
+
+/* Hero */
+.hero{
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  border-radius:16px;color:#fff;padding:31px 34px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:25px;box-shadow:var(--shadow);margin-bottom:22px;
+}
+.hero h1{margin:0 0 8px;font-size:28px;font-weight:650}
+.hero p{margin:0;opacity:.86;font-size:14px}
+.hero-badge{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+  padding:11px 15px;border-radius:10px;font-size:12px;white-space:nowrap
+}
+
+/* Search */
+.searchbox{
+  background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:10px 15px;display:flex;align-items:center;gap:10px;
+  margin-bottom:28px;box-shadow:0 2px 8px rgba(0,0,0,.02)
+}
+.searchbox span{font-size:18px}
+.searchbox input{border:0;outline:0;width:100%;font-size:14px;color:var(--text);background:transparent}
+
+/* Section */
+.section{margin-top:28px}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:13px}
+.section-head h2{font-size:18px;margin:0}
+.section-head p{font-size:12px;color:var(--muted);margin:4px 0 0}
+.section-head .count{font-size:11px;color:var(--muted)}
+
+/* Cards */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:13px;
+  padding:20px;min-height:205px;display:flex;flex-direction:column;
+  box-shadow:0 3px 12px rgba(18,57,91,.05);transition:.18s;
+}
+.card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:#c9d8e4}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.card-icon{
+  width:44px;height:44px;border-radius:11px;background:#eaf3fa;
+  display:grid;place-items:center;font-size:22px
+}
+.status{font-size:10px;color:var(--success);background:#edf8f1;padding:5px 8px;border-radius:20px}
+.card h3{margin:16px 0 7px;font-size:16px}
+.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.5;flex:1}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.category{font-size:11px;color:var(--muted)}
+.open{
+  background:var(--primary-2);color:#fff;border-radius:7px;padding:9px 12px;
+  font-size:12px;font-weight:600
+}
+.open:hover{background:var(--primary)}
+
+/* Quick links */
+.quick{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px
+}
+.quick-item{
+  background:var(--surface);border:1px solid var(--border);border-radius:11px;
+  padding:15px;display:flex;align-items:center;gap:12px;cursor:pointer
+}
+.quick-item:hover{border-color:#c6d9e7;background:#fbfdff}
+.quick-icon{font-size:21px}
+.quick-item strong{font-size:12px;display:block}
+.quick-item span{font-size:10px;color:var(--muted)}
+
+/* Updates */
+.updates{
+  background:var(--surface);border:1px solid var(--border);border-radius:13px;
+  overflow:hidden
+}
+.update{
+  padding:15px 18px;border-bottom:1px solid var(--border);
+  display:flex;gap:14px;align-items:flex-start
+}
+.update:last-child{border-bottom:0}
+.update-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:6px;flex:none}
+.update strong{font-size:13px}
+.update p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.update time{margin-left:auto;font-size:10px;color:var(--muted);white-space:nowrap}
+
+/* Footer */
+.footer{
+  margin-top:35px;padding:18px 0;border-top:1px solid var(--border);
+  font-size:11px;color:var(--muted);display:flex;justify-content:space-between
+}
+.empty{display:none;text-align:center;color:var(--muted);padding:40px;background:#fff;border:1px solid var(--border);border-radius:12px}
+
+/* Mobile */
+.menu-btn{display:none;border:0;background:none;font-size:22px;cursor:pointer;color:var(--primary)}
+@media(max-width:1050px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .quick{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .sidebar{transform:translateX(-100%);transition:.2s}
+  .sidebar.opened{transform:translateX(0)}
+  .main{margin-left:0;width:100%}
+  .menu-btn{display:block}
+  .topbar{padding:0 18px}
+  .content{padding:22px 18px 35px}
+  .hero{padding:24px;align-items:flex-start;flex-direction:column}
+  .grid,.quick{grid-template-columns:1fr}
+  .user span{display:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="sidebar" id="sidebar">
+  <div class="logo">
+    <div class="logo-mark">▦</div>
+    <strong>Orçamento & BI</strong>
+    <small>Portal de Gestão</small>
+  </div>
+
+  <div class="nav">
+    <div class="nav-label">Navegação</div>
+    <button class="active" onclick="showCategory('Todos',this)"><span class="nav-icon">⌂</span> Início</button>
+    <button onclick="showCategory('Orçamento',this)"><span class="nav-icon">▣</span> Orçamento</button>
+    <button onclick="showCategory('Receitas',this)"><span class="nav-icon">◈</span> Receitas</button>
+    <button onclick="showCategory('Despesas',this)"><span class="nav-icon">▤</span> Despesas</button>
+    <button onclick="showCategory('Indicadores',this)"><span class="nav-icon">↗</span> Indicadores</button>
+
+    <div class="nav-label" style="margin-top:12px">Apoio</div>
+    <button onclick="scrollToSection('updates')"><span class="nav-icon">◷</span> Atualizações</button>
+    <button onclick="scrollToSection('quick')"><span class="nav-icon">☆</span> Acessos rápidos</button>
+  </div>
+
+  <div class="side-footer">
+    Portal interno<br>
+    BHTRANS • FMU
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    <div class="breadcrumb">Portal / <strong>Início</strong></div>
+    <div class="user"><span>BI DAF - Diretoria de Administração, Orçamento e Finanças</span><div class="avatar">BI</div></div>
+  </div>
+
+  <div class="content">
+
+    <section class="hero">
+      <div>
+        <h1>BI DAF - Diretoria de Administração, Orçamento e Finanças</h1>
+        <p>Central de acesso aos painéis, indicadores e informações para apoio à gestão.</p>
+      </div>
+      <div class="hero-badge">● Ambiente interno</div>
+    </section>
+
+    <div class="searchbox">
+      <span>⌕</span>
+      <input id="search" type="search" placeholder="Pesquisar por relatório, área ou assunto..." oninput="applyFilters()">
+    </div>
+
+    <section class="section" id="panels">
+      <div class="section-head">
+        <div>
+          <h2>Principais painéis</h2>
+          <p>Acesse os relatórios Power BI da área.</p>
+        </div>
+        <span class="count" id="count"></span>
+      </div>
+
+      <div class="grid" id="cards">
+
+        <article class="card" data-category="Orçamento" data-search="execução orçamentária orçamento despesa empenho liquidação pagamento">
+          <div class="card-top">
+            <div class="card-icon">📊</div>
+            <span class="status">● Disponível</span>
+          </div>
+          <h3>Execução Orçamentária</h3>
+          <p>Acompanhamento da execução orçamentária e financeira, com visão gerencial dos principais indicadores.</p>
+          <div class="card-footer">
+            <span class="category">Orçamento</span>
+            <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiZDdiMGQxZTQtZDY2ZS00NTVmLTk5NmMtNjgwYTM4ZGMyNmQyIiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9" target="_blank" rel="noopener">Abrir painel →</a>
+          </div>
+        </article>
+
+        <article class="card" data-category="Orçamento" data-search="PLOA 2027 proposta lei orçamento planejamento">
+          <div class="card-top">
+            <div class="card-icon">📑</div>
+            <span class="status">● Disponível</span>
+          </div>
+          <h3>PLOA 2027</h3>
+          <p>Consulta e acompanhamento da Proposta de Lei Orçamentária Anual para planejamento e análise.</p>
+          <div class="card-footer">
+            <span class="category">Orçamento</span>
+            <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiMTdlM2VhYjItNTBjNi00MGY0LWJhMGQtNmIyZTFjYzU1OTU1IiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9" target="_blank" rel="noopener">Abrir painel →</a>
+          </div>
+        </article>
+
+        <article class="card" data-category="Orçamento" data-search="orçamento LOA orçamento anual">
+          <div class="card-top">
+            <div class="card-icon">💰</div>
+            <span class="status">● Disponível</span>
+          </div>
+          <h3>Orçamento</h3>
+          <p>Visão consolidada do orçamento e de seus principais dados para acompanhamento da gestão.</p>
+          <div class="card-footer">
+            <span class="category">Orçamento</span>
+            <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiYjU0NWQ2YTAtOTQ3Mi00MmZhLTg2NGYtNGFjZDVjODg0ZDY0IiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9" target="_blank" rel="noopener">Abrir painel →</a>
+          </div>
+        </article>
+
+        <article class="card" data-category="Receitas" data-search="receita arrecadação projeção receita líquida">
+          <div class="card-top"><div class="card-icon">💵</div><span class="status">Em expansão</span></div>
+          <h3>Receitas</h3>
+          <p>Área preparada para centralizar painéis de receita, arrecadação e projeções.</p>
+          <div class="card-footer"><span class="category">Receitas</span><a class="open" href="#" onclick="comingSoon();return false">Em breve →</a></div>
+        </article>
+
+        <article class="card" data-category="Despesas" data-search="despesa empenho liquidado pago restos a pagar">
+          <div class="card-top"><div class="card-icon">💳</div><span class="status">Em expansão</span></div>
+          <h3>Despesas</h3>
+          <p>Área preparada para relatórios de empenho, liquidação, pagamento e execução da despesa.</p>
+          <div class="card-footer"><span class="category">Despesas</span><a class="open" href="#" onclick="comingSoon();return false">Em breve →</a></div>
+        </article>
+
+        <article class="card" data-category="Indicadores" data-search="indicadores gestão eficiência desempenho estratégico">
+          <div class="card-top"><div class="card-icon">📈</div><span class="status">Em expansão</span></div>
+          <h3>Indicadores de Gestão</h3>
+          <p>Espaço reservado para indicadores estratégicos e acompanhamento de desempenho.</p>
+          <div class="card-footer"><span class="category">Indicadores</span><a class="open" href="#" onclick="comingSoon();return false">Em breve →</a></div>
+        </article>
+
+      </div>
+      <div class="empty" id="empty">Nenhum painel encontrado para a pesquisa.</div>
+    </section>
+
+    <section class="section" id="quick">
+      <div class="section-head">
+        <div>
+          <h2>Acessos rápidos</h2>
+          <p>Atalhos para as principais áreas do portal.</p>
+        </div>
+      </div>
+      <div class="quick">
+        <div class="quick-item" onclick="showCategory('Orçamento', document.querySelectorAll('.nav button')[1])">
+          <div class="quick-icon">📊</div><div><strong>Orçamento</strong><span>Planejamento e execução</span></div>
+        </div>
+        <div class="quick-item" onclick="showCategory('Receitas', document.querySelectorAll('.nav button')[2])">
+          <div class="quick-icon">💵</div><div><strong>Receitas</strong><span>Arrecadação e projeções</span></div>
+        </div>
+        <div class="quick-item" onclick="showCategory('Despesas', document.querySelectorAll('.nav button')[3])">
+          <div class="quick-icon">💳</div><div><strong>Despesas</strong><span>Execução financeira</span></div>
+        </div>
+        <div class="quick-item" onclick="showCategory('Indicadores', document.querySelectorAll('.nav button')[4])">
+          <div class="quick-icon">📈</div><div><strong>Indicadores</strong><span>Gestão e desempenho</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="updates">
+      <div class="section-head">
+        <div>
+          <h2>Últimas atualizações</h2>
+          <p>Espaço para comunicar novidades dos painéis.</p>
+        </div>
+      </div>
+      <div class="updates">
+        <div class="update">
+          <div class="update-dot"></div>
+          <div><strong>PLOA 2027</strong><p>Painel disponível para consulta e acompanhamento.</p></div>
+          <time>Atualizado recentemente</time>
+        </div>
+        <div class="update">
+          <div class="update-dot"></div>
+          <div><strong>Execução Orçamentária</strong><p>Relatório disponível no portal.</p></div>
+          <time>Atualizado recentemente</time>
+        </div>
+        <div class="update">
+          <div class="update-dot"></div>
+          <div><strong>Orçamento</strong><p>Painel integrado ao BI DAF - Diretoria de Administração, Orçamento e Finanças.</p></div>
+          <time>Atualizado recentemente</time>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>BI DAF - Diretoria de Administração, Orçamento e Finanças • BHTRANS / FMU</span>
+      <span>Versão 1.0</span>
+    </div>
+  </div>
+</main>
+</div>
+
+<script>
+let currentCategory='Todos';
+
+function showCategory(category,button){
+  currentCategory=category;
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if(button) button.classList.add('active');
+  applyFilters();
+  document.getElementById('panels').scrollIntoView({behavior:'smooth',block:'start'});
+  if(window.innerWidth<=760) document.getElementById('sidebar').classList.remove('opened');
+}
+
+function applyFilters(){
+  const term=document.getElementById('search').value.toLowerCase().trim();
+  let visible=0;
+  document.querySelectorAll('.card').forEach(card=>{
+    const categoryOk=currentCategory==='Todos'||card.dataset.category===currentCategory;
+    const text=(card.innerText+' '+card.dataset.search).toLowerCase();
+    const termOk=!term||text.includes(term);
+    const show=categoryOk&&termOk;
+    card.style.display=show?'flex':'none';
+    if(show) visible++;
+  });
+  document.getElementById('count').textContent=visible+' painel(is)';
+  document.getElementById('empty').style.display=visible?'none':'block';
+}
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  if(window.innerWidth<=760) document.getElementById('sidebar').classList.remove('opened');
+}
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('opened');
+}
+function comingSoon(){
+  alert('Este espaço está preparado para receber o próximo painel.');
+}
+applyFilters();
+</script>
+</body>
+</html>
