@@ -208,7 +208,8 @@ a{text-decoration:none;color:inherit}
     <button onclick="showCategory('Orçamento',this)"><span class="nav-icon">▣</span> Orçamento</button>
     <button onclick="showCategory('GEORF ',this)"><span class="nav-icon">◈</span> GEORF </button>
     <button onclick="showCategory('GEAMP ',this)"><span class="nav-icon">▤</span> GEAMP </button>
-    <button onclick="showCategory('Indicadores',this)"><span class="nav-icon">↗</span> Indicadores</button>
+	<button onclick="showCategory('GEAMP ',this)"><span class="nav-icon">▤</span> GECOL </button>
+    <button onclick="showCategory('Indicadores',this)"><span class="nav-icon">↗</span> GECON</button>
 
     <div class="nav-label" style="margin-top:12px">Apoio</div>
     <button onclick="scrollToSection('updates')"><span class="nav-icon">◷</span> Atualizações</button>
@@ -303,7 +304,7 @@ a{text-decoration:none;color:inherit}
           <p>Responsável pela gestão legal e administrativa das compras, contratações,licitações e do almoxarifado.</p>
           <div class="card-footer">
             <span class="category">Orçamento</span>
-            <a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiMTM0YmQ1NmQtYTY2Yi00ZDgwLTg0ZTUtZjZlYWZlOWRjM2VmIiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9" target="_blank" rel="noopener">Abrir painel →</a>
+            <a class="open" href=https://app.powerbi.com/view?r=eyJrIjoiMTM0YmQ1NmQtYTY2Yi00ZDgwLTg0ZTUtZjZlYWZlOWRjM2VmIiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9" target="_blank" rel="noopener">Abrir painel →</a>
           </div>
         </article>
 
@@ -321,11 +322,14 @@ a{text-decoration:none;color:inherit}
           <div class="card-footer"><span class="category">GEAMP </span><a class="open" href="#" onclick="comingSoon();return false">Em breve →</a></div>
         </article>
    
-        <article class="card" data-category="Indicadores" data-search="indicadores gestão eficiência desempenho estratégico">
+        <article class="card" data-category="GECON" data-search="contabilidade, patrimonio">
           <div class="card-top"><div class="card-icon">📈</div><span class="status">Em Desevolvimento </span></div>
           <h3>Indicadores de Gestão</h3>
-          <p>Espaço reservado para indicadores estratégicos e acompanhamento de desempenho.</p>
-          <div class="card-footer"><span class="category">Indicadores</span><a class="open" href="#" onclick="comingSoon();return false">Em breve →</a></div>
+          <p>Área responsável pela contabilidade e controle de patrimônio.</p>
+          <div class="card-footer">
+	<span class="category">GECON</span>
+	<a class="open" href="https://app.powerbi.com/view?r=eyJrIjoiMjZjMzc4NjEtNTdmMy00MzJhLWEwNDYtMTAxNjhkYTBmNzFjIiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9" target="_blank" rel="noopener">Abrir painel →</a>
+          </div>
         </article>
 
       </div>
@@ -349,11 +353,11 @@ a{text-decoration:none;color:inherit}
         <div class="quick-item" onclick="showCategory('GEAMP ', document.querySelectorAll('.nav button')[3])">
           <div class="quick-icon">⚙️</div><div><strong>GEAMP </strong><span>Execução financeira</span></div>
         </div>
-        <div class="quick-item" onclick="showCategory('GECOL', document.querySelectorAll('.nav button')[4])">
-          <div class="quick-icon">📄</div><div><strong>GECOL</strong><span>Contratos</span></div>
+        <div class="quick-item" onclick="showCategory('Contratos', document.querySelectorAll('.nav button')[4])">
+          <div class="quick-icon">📄</div><div><strong>Contratos</strong><span>Contratos</span></div>
         </div>
-	<div class="quick-item" onclick="showCategory('Indicadores', document.querySelectorAll('.nav button')[5])">
-          <div class="quick-icon">📈</div><div><strong>Indicadores</strong><span>Gestão e desempenho</span></div>
+	<div class="quick-item" onclick="showCategory('GECON', document.querySelectorAll('.nav button')[5])">
+          <div class="quick-icon">📈</div><div><strong>GECON</strong><span>Contabilidade</span></div>
         </div>
       </div>
     </section>
