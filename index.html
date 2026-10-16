@@ -160,6 +160,71 @@ a{text-decoration:none;color:inherit}
 
 .submenu-file-icon{width:17px;text-align:center;flex-shrink:0}
 
+
+ /* SUBMENU DA BIBLIOTECA */
+.submenu-biblioteca{
+  display:none;
+  margin:2px 0 8px 29px;
+  padding-left:10px;
+  border-left:1px solid rgba(255,255,255,.28);
+}
+.submenu-biblioteca.open{display:block}
+
+.nav .biblioteca-categoria{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 9px;
+  margin:2px 0;
+  border:0;
+  border-radius:7px;
+  background:transparent;
+  color:rgba(255,255,255,.82);
+  text-align:left;
+  font-family:inherit;
+  font-size:12px;
+  line-height:1.4;
+  cursor:pointer;
+}
+.nav .biblioteca-categoria:hover,
+.nav .biblioteca-categoria[aria-expanded="true"]{
+  background:rgba(255,255,255,.13);
+  color:#fff;
+}
+.biblioteca-categoria .submenu-arrow{
+  margin-left:auto;
+  font-size:11px;
+  transition:transform .2s ease;
+}
+.biblioteca-categoria[aria-expanded="true"] .submenu-arrow{
+  transform:rotate(180deg);
+}
+.biblioteca-arquivos{
+  display:none;
+  margin:0 0 6px 10px;
+  padding-left:9px;
+  border-left:1px solid rgba(255,255,255,.22);
+}
+.biblioteca-arquivos.open{display:block}
+.nav .biblioteca-arquivos a{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+  padding:9px;
+  margin:2px 0;
+  border-radius:7px;
+  color:rgba(255,255,255,.82);
+  font-size:11px;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+  transition:background .2s ease;
+}
+.nav .biblioteca-arquivos a:hover{
+  background:rgba(255,255,255,.13);
+  color:#fff;
+}
+
 .side-footer{
   position:relative;
   z-index:1;
@@ -472,18 +537,163 @@ a{text-decoration:none;color:inherit}
       <span class="submenu-arrow">▼</span>
     </button>
 
-    <div class="submenu-fluxogramas" id="submenuFluxogramas">
-      <a
-        href="https://drive.google.com/file/d/12V2kBele2SHAYOJ34iWyDLp0vWSkXFyt/view?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Abrir Nova Contratação / Aquisição no Google Drive"
-      >
-        <span class="submenu-file-icon">📄</span>
-        <span>Nova Contratação / Aquisição</span>
-      </a>
-    </div>
-  </div>
+   <!-- SUBMENU -->
+<div class="submenu-fluxogramas" id="submenuFluxogramas">
+
+  <!-- Fluxograma 1 -->
+  <a
+    href="https://drive.google.com/file/d/12V2kBele2SHAYOJ34iWyDLp0vWSkXFyt/view"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Abrir Nova Contratação / Aquisição"
+  >
+    <span class="submenu-file-icon">📄</span>
+    <span>Nova Contratação / Aquisição</span>
+  </a>
+
+  <!-- Fluxograma 2 -->
+  <a
+    href="https://drive.google.com/file/d/1BeuByS14obsIESiaHqki5vIlxJXsPBQu/view?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Abrir Inspeção Financeira"
+  >
+    <span class="submenu-file-icon">📄</span>
+    <span>Inspeção Financeira</span>
+  </a>
+  <!-- Fluxograma 3 -->
+  <a
+    href="https://drive.google.com/file/d/1nMWVj77ut2xvjvyDz8fkvke-0zXk9NKG/view?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="Abrir Processp de Pagamento"
+  >
+    <span class="submenu-file-icon">📄</span>
+    <span>Processo de Pagamento</span>
+  </a>
+</div>
+
+    <!-- BIBLIOTECA -->
+    <button
+      type="button"
+      class="submenu-toggle"
+      id="bibliotecaToggle"
+      aria-expanded="false"
+      aria-controls="submenuBiblioteca"
+      onclick="toggleBiblioteca()"
+    >
+      <span class="nav-icon">▤</span>
+      <span>Biblioteca</span>
+      <span class="submenu-arrow">▼</span>
+    </button>
+
+    <div class="submenu-biblioteca" id="submenuBiblioteca">
+
+      <!-- APRESENTAÇÕES -->
+      <button type="button" class="biblioteca-categoria" aria-expanded="false"
+        onclick="toggleCategoriaBiblioteca('arquivosApresentacoes', this)">
+        <span class="submenu-file-icon">📊</span>
+        <span>Apresentações</span>
+        <span class="submenu-arrow">▼</span>
+      </button>
+      <div class="biblioteca-arquivos" id="arquivosApresentacoes">
+        <a href="https://drive.google.com/file/d/1uDqE13mg_wohWKR1OKUzsMAxU9U8UXLI/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer" title="Apresentação DAF - 07/26">
+          <span class="submenu-file-icon">📄</span>
+          <span>Apresentação DAF - 07/26</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1hQNF1kcJdGYgfGTWI1UY8DcYR1sISljn/view?usp=sharing"
+           target="_blank" rel="noopener noreferrer" title="Responsabilidade Pessoal do Agente Público">
+          <span class="submenu-file-icon">📄</span>
+          <span>Respons. Pessoal do Agente Público</span>
+        </a>
+      </div>
+
+      <!-- RELATÓRIOS -->
+      <button type="button" class="biblioteca-categoria" aria-expanded="false"
+        onclick="toggleCategoriaBiblioteca('arquivosRelatorios', this)">
+        <span class="submenu-file-icon">📑</span>
+	<span>Relatórios</span>
+	<span class="submenu-arrow">▼</span>
+      </button>
+      <div class="biblioteca-arquivos" id="arquivosRelatorios">
+        <!-- Adicione aqui os links dos relatórios -->
+      </div>
+
+      <!-- LEIS -->
+      <button type="button" class="biblioteca-categoria" aria-expanded="false"
+        onclick="toggleCategoriaBiblioteca('arquivosLeis', this)">
+        <span class="submenu-file-icon">⚖️</span><span>Leis</span><span class="submenu-arrow">▼</span>
+      </button>
+      <div class="biblioteca-arquivos" id="arquivosLeis">
+        <!-- Adicione aqui os links das leis -->
+      </div>
+
+      <!-- DECRETOS -->
+      <button type="button" class="biblioteca-categoria" aria-expanded="false"
+        onclick="toggleCategoriaBiblioteca('arquivosDecretos', this)">
+        <span class="submenu-file-icon">📜</span><span>Decretos</span><span class="submenu-arrow">▼</span>
+      </button>
+      <div class="biblioteca-arquivos" id="arquivosDecretos">
+        <!-- Adicione aqui os links dos decretos -->
+      </div>
+
+      <!-- PORTARIAS E INSTRUÇÕES NORMATIVAS -->
+      <button type="button" class="biblioteca-categoria" aria-expanded="false"
+        onclick="toggleCategoriaBiblioteca('arquivosPortarias', this)">
+        <span class="submenu-file-icon">📋</span><span>Portarias e Instruções Normativas</span><span class="submenu-arrow">▼</span>
+      </button>
+      <div class="biblioteca-arquivos" id="arquivosPortarias">
+        <!-- Adicione aqui os links das portarias e instruções normativas -->
+      </div>
+
+      <!-- MANUAIS E ORIENTAÇÕES -->
+      <button type="button" class="biblioteca-categoria" aria-expanded="false"
+        onclick="toggleCategoriaBiblioteca('arquivosManuais', this)">
+        <span class="submenu-file-icon">📚</span><span>Manuais e Orientações</span><span class="submenu-arrow">▼</span>
+      </button>
+      <div class="biblioteca-arquivos" id="arquivosManuais">
+
+      </div>
+
+      
+<!-- MODELOS E FORMULÁRIOS -->
+<button type="button"
+  class="biblioteca-categoria"
+  aria-expanded="false"
+  onclick="toggleCategoriaBiblioteca('arquivosModelos', this)">
+  <span class="submenu-file-icon">🗂️</span>
+  <span>Modelos e Formulários</span>
+  <span class="submenu-arrow">▼</span>
+</button>
+
+<div class="biblioteca-arquivos" id="arquivosModelos">
+
+  <a href="https://drive.google.com/file/d/1wZ8Ckc0dDBzqBYOVwTSWmGoNfqZz7A_h/view?usp=sharing"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Formulário - Inspeção Financeira">
+    <span class="submenu-file-icon">🗂️</span>
+    <span>Formulário - Inspeção Financeira</span>
+  </a>
+
+</div>
+
+<!-- OUTROS DOCUMENTOS -->
+<button type="button"
+  class="biblioteca-categoria"
+  aria-expanded="false"
+  onclick="toggleCategoriaBiblioteca('arquivosOutros', this)">
+  <span class="submenu-file-icon">📁</span>
+  <span>Outros Documentos</span>
+  <span class="submenu-arrow">▼</span>
+</button>
+
+<div class="biblioteca-arquivos" id="arquivosOutros">
+  <!-- Adicione aqui os links de outros documentos -->
+</div>
+
+    
 
   <div class="side-footer">
     Portal interno<br>
@@ -818,6 +1028,22 @@ function toggleFluxogramas(){
   const estaAberto = submenu.classList.toggle('open');
 
   toggle.setAttribute('aria-expanded',String(estaAberto));
+}
+
+/* MENU PRINCIPAL DA BIBLIOTECA */
+function toggleBiblioteca(){
+  const submenu = document.getElementById('submenuBiblioteca');
+  const toggle = document.getElementById('bibliotecaToggle');
+  const estaAberto = submenu.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', String(estaAberto));
+}
+
+/* ABRIR/FECHAR CADA CATEGORIA DA BIBLIOTECA */
+function toggleCategoriaBiblioteca(id, botao){
+  const arquivos = document.getElementById(id);
+  if(!arquivos) return;
+  const estaAberto = arquivos.classList.toggle('open');
+  botao.setAttribute('aria-expanded', String(estaAberto));
 }
 
 /* ABRIR PAINEL CCG */
