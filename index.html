@@ -610,15 +610,24 @@ a { text-decoration: none; color: inherit; }
         </a>
       </div>
 
-      <!-- MANUAIS E ORIENTAÇÕES -->
+      <!-- NORMATIVOS INSTITUCIONAIS -->
       <button type="button" class="biblioteca-categoria" aria-expanded="false"
         onclick="toggleCategoriaBiblioteca('arquivosManuais',this)">
-        <span class="submenu-file-icon">📚</span>
-        <span>Manuais e Orientações</span>
+        <span class="submenu-file-icon">📝</span>
+        <span>Normativos Institucionais</span>
         <span class="submenu-arrow">▼</span>
       </button>
       <div class="biblioteca-arquivos" id="arquivosManuais">
-        <!-- Adicione aqui os links dos manuais -->
+       <a href="https://drive.google.com/file/d/1fJbFZrS4QiJjgMmfNY_waaS0mXSMRZfs/view?usp=sharing"
+          target="_blank" rel="noopener noreferrer" title="Estatuto BHTRANS-2026">
+          <span class="submenu-file-icon">📝</span>
+          <span>Estatuto BHTRANS-2026</span>
+        </a>
+       <a href="https://drive.google.com/file/d/1RZyksoSJRrXlFFkoVvO3L42YaG65L1p8/view?usp=sharing"
+          target="_blank" rel="noopener noreferrer" title="Regimento Interno">
+          <span class="submenu-file-icon">📝</span>
+          <span>Regimento Interno</span>
+        </a>
       </div>
 
       <!-- MODELOS E FORMULÁRIOS -->
@@ -649,7 +658,7 @@ a { text-decoration: none; color: inherit; }
 
     </div>
 
-    <!-- ORGANOGRAMA - LOGO ABAIXO DA BIBLIOTECA -->
+    <!-- ORGANOGRAMA  -->
     <a
       class="nav-organograma"
       href="https://drive.google.com/file/d/1FLevYQvCK1e0A95zSDZYEYLGnEkd-otW/view?usp=sharing"
@@ -890,11 +899,21 @@ a { text-decoration: none; color: inherit; }
           <time>Atualizado recentemente</time>
         </div>
 
+      <div class="updates">
+        <div class="update" style="cursor:pointer" onclick="abrirGECOL()">
+          <div class="update-dot"></div>
+          <div>
+            <strong>GECOL</strong>
+            <p>Painel integrado à Gerência de Contratos e Licenciamentos.</p>
+          </div>
+          <time>Atualizado recentemente</time>
+        </div>
+
         <div class="update">
           <div class="update-dot"></div>
           <div>
             <strong>GEORC</strong>
-            <p>Painel integrado à Diretoria de Planejamento, Gestão e Finanças.</p>
+            <p>Painel integrado à Gerência de Orçamentos.</p>
           </div>
           <time>Atualizado recentemente</time>
         </div>
@@ -918,6 +937,7 @@ let currentCategory = 'Todos';
 /* LINK DO PAINEL CCG */
 const LINK_CCG =
   'https://app.powerbi.com/view?r=eyJrIjoiMGY2YTM2Y2YtY2I3Zi00YzY4LTlkY2EtNzQ2YzAwNzVkM2I0IiwidCI6IjVkNzdmY2E1LWIxZDEtNDI3OS1iNzk3LWEzYTY1NzA2Y2YxOSJ9';
+
 
 /* FILTRO DE CATEGORIA */
 function showCategory(category, button) {
