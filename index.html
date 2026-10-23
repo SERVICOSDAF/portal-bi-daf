@@ -490,38 +490,7 @@ a { text-decoration: none; color: inherit; }
       <span class="nav-icon">☆</span> Acessos rápidos
     </button>
 
-    <!-- FLUXOGRAMAS -->
-    <button type="button"
-      class="submenu-toggle"
-      id="fluxogramasToggle"
-      aria-expanded="false"
-      aria-controls="submenuFluxogramas"
-      onclick="toggleFluxogramas()">
-      <span class="nav-icon">⌘</span>
-      <span>Fluxogramas</span>
-      <span class="submenu-arrow">▼</span>
-    </button>
-
-    <div class="submenu-fluxogramas" id="submenuFluxogramas">
-      <a href="https://drive.google.com/file/d/12V2kBele2SHAYOJ34iWyDLp0vWSkXFyt/view"
-        target="_blank" rel="noopener noreferrer" title="Abrir Nova Contratação / Aquisição">
-        <span class="submenu-file-icon">📄</span>
-        <span>Nova Contratação / Aquisição</span>
-      </a>
-
-      <a href="https://drive.google.com/file/d/1BeuByS14obsIESiaHqki5vIlxJXsPBQu/view?usp=sharing"
-        target="_blank" rel="noopener noreferrer" title="Abrir Inspeção Financeira">
-        <span class="submenu-file-icon">📄</span>
-        <span>Inspeção Financeira</span>
-      </a>
-
-      <a href="https://drive.google.com/file/d/1jcSgSyxH2yChbB_SKOwY8IyfkeJymT3T/view?usp=sharing"
-        target="_blank" rel="noopener noreferrer" title="Abrir Processo de Pagamento">
-        <span class="submenu-file-icon">📄</span>
-        <span>Processo de Pagamento</span>
-      </a>
-    </div>
-
+ 
     <!-- BIBLIOTECA -->
     <button type="button"
       class="submenu-toggle"
@@ -547,16 +516,58 @@ a { text-decoration: none; color: inherit; }
       <div class="biblioteca-arquivos" id="arquivosApresentacoes">
         <a href="https://drive.google.com/file/d/1uDqE13mg_wohWKR1OKUzsMAxU9U8UXLI/view?usp=sharing"
           target="_blank" rel="noopener noreferrer" title="Apresentação DAF - 07/26">
-          <span class="submenu-file-icon">📄</span>
+          <span class="submenu-file-icon">📊</span>
           <span>Apresentação DAF - 07/26</span>
         </a>
 
         <a href="https://drive.google.com/file/d/1hQNF1kcJdGYgfGTWI1UY8DcYR1sISljn/view?usp=sharing"
           target="_blank" rel="noopener noreferrer" title="Responsabilidade Pessoal do Agente Público">
-          <span class="submenu-file-icon">📄</span>
+          <span class="submenu-file-icon">📊</span>
           <span>Respons. Pessoal do Agente Público</span>
         </a>
       </div>
+
+
+<!-- FLUXOGRAMAS -->
+
+<button type="button"
+  class="biblioteca-categoria"
+  aria-expanded="false"
+  onclick="toggleCategoriaBiblioteca('arquivosFluxogramas', this)">
+
+  <span class="submenu-file-icon">🔀</span>
+  <span>Fluxogramas</span>
+  <span class="submenu-arrow">▼</span>
+
+</button>
+
+<div class="biblioteca-arquivos" id="arquivosFluxogramas">
+  <a href="https://drive.google.com/file/d/12V2kBele2SHAYOJ34iWyDLp0vWSkXFyt/view"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Abrir Nova Contratação / Aquisição">
+    <span class="submenu-file-icon">🔀</span>
+    <span>Nova Contratação / Aquisição</span>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1BeuByS14obsIESiaHqki5vIlxJXsPBQu/view?usp=sharing"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Abrir Inspeção Financeira">
+    <span class="submenu-file-icon">🔀</span>
+    <span>Inspeção Financeira</span>
+  </a>
+
+  <a href="https://drive.google.com/file/d/1jcSgSyxH2yChbB_SKOwY8IyfkeJymT3T/view?usp=sharing"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Abrir Processo de Pagamento">
+    <span class="submenu-file-icon">🔀</span>
+    <span>Processo de Pagamento</span>
+  </a>
+
+</div>
+
 
       <!-- RELATÓRIOS -->
       <button type="button" class="biblioteca-categoria" aria-expanded="false"
@@ -565,8 +576,14 @@ a { text-decoration: none; color: inherit; }
         <span>Relatórios</span>
         <span class="submenu-arrow">▼</span>
       </button>
-      <div class="biblioteca-arquivos" id="arquivosRelatorios">
-        <!-- Adicione aqui os links dos relatórios -->
+
+      	<div class="biblioteca-arquivos" id="arquivosRelatorios">
+        <a href="https://drive.google.com/file/d/13aZy6yJUAvXGRxtj9lRNb7O5C4B_1jou/view?usp=sharing"
+          target="_blank" rel="noopener noreferrer" title="Relatório de Gestão DAF - 2025">
+          <span class="submenu-file-icon">📄</span>
+          <span>Relatório de Gestão DAF - 2025</span>
+        </a>
+
       </div>
 
       <!-- LEIS -->
@@ -656,20 +673,37 @@ a { text-decoration: none; color: inherit; }
         <!-- Adicione aqui os links de outros documentos -->
       </div>
 
-    </div>
 
-    <!-- ORGANOGRAMA  -->
-    <a
-      class="nav-organograma"
-      href="https://drive.google.com/file/d/1FLevYQvCK1e0A95zSDZYEYLGnEkd-otW/view?usp=sharing"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="Abrir Organograma">
-      <span class="nav-icon">🏢</span>
-      <span>Organograma</span>
-    </a>
+<!-- ORGANOGRAMAS -->
 
-  </div>
+<button type="button"
+  class="biblioteca-categoria"
+  aria-expanded="false"
+  onclick="toggleCategoriaBiblioteca('arquivosOrganogramas', this)">
+  <span class="submenu-file-icon">🏢</span>
+  <span>Organogramas</span>
+  <span class="submenu-arrow">▼</span>
+</button>
+<div class="biblioteca-arquivos" id="arquivosOrganogramas">
+
+  <a href="https://drive.google.com/file/d/1FLevYQvCK1e0A95zSDZYEYLGnEkd-otW/view?usp=sharing"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Organograma - BHTRANS">
+    <span class="submenu-file-icon">🏢</span>
+    <span>Organograma - BHTRANS</span>
+  </a>
+
+  <a href="https://drive.google.com/file/d/14gewHLocj1dcBY9sQ6TYE9lk2SCi13xW/view?usp=sharing"
+     target="_blank"
+     rel="noopener noreferrer"
+     title="Organograma - DPF">
+    <span class="submenu-file-icon">🏢</span>
+    <span>Organograma - DPF</span>
+
+  </a>
+
+</div>
 
   <div class="side-footer">
     Portal interno<br>
